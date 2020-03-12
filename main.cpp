@@ -340,8 +340,8 @@ int main( int argc, char* argv[] )
         batchCount = 0;
     }
     
-    
-    net->printTime();        
+    // printing time
+    // net->printTime();        
 
     if(groundTruth.size() > 0)
     {

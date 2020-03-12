@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
+set(OpenCV_DIR /opt/ros/kinetic/share/OpenCV-3.3.1-dev/)
 project(demo)
 
 set(CMAKE_BUILD_TYPE Release)
