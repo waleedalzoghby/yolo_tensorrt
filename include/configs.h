@@ -12,8 +12,9 @@ namespace Tn
     const std::string CALIBRATION_LIST = "";
     const std::string MODE = "fp32";
     const std::string OUTPUTS= "yolo-det";//layer82-conv,layer94-conv,layer106-conv
-    const int INPUT_WIDTH = 608;
-    const int INPUT_HEIGHT = 608;
+    const std::string DATASET_PATH = "/home/waleed/projects/MIT/MIT-Driverless-CV-TrainingInfra/CVC-YOLOv3/dataset/YOLO_Dataset/";
+    const int INPUT_WIDTH = 800; //608;
+    const int INPUT_HEIGHT = 800; //608;
 
     const int DETECT_CLASSES = 80;
     const float NMS_THRESH = 0.45;

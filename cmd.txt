@@ -23,4 +23,34 @@
 
 ./runYolov3 --caffemodel=full_800.caffemodel --prototxt=full_800.prototxt --input=/home/waleed/Desktop/test/GMS-Feature-Matcher/data/left_high.jpg --W=800 --H=800 --class=80 --mode=int8 --batchsize=1 --nms=0.001 --calib=../calib_sample.txt --enginefile=./full_800_img1700_b1_int8.engine
 
+-----FB16
+//generating engine file
+./runYolov3 --caffemodel=../data/full_800_multi.caffemodel --prototxt=../data/full_800.prototxt --input=/home/waleed/Desktop/test/GMS-Feature-Matcher/data/left_high.jpg --W=800 --H=800 --class=80 --mode=fp16 --enginefile= --batchsize=2 --nms=0.01
+
+
+//run inference
+./runYolov3 --caffemodel=../data/full_800_multi.caffemodel --prototxt=../data/full_800.prototxt --input=/home/waleed/Desktop/test/GMS-Feature-Matcher/data/left_high.jpg --W=800 --H=800 --class=80 --mode=fp16 --enginefile=full_800_fp16_multi.engine --batchsize=2 --nms=0.01
+
+------INT8
+
+// generating engine
+
+./runYolov3 --caffemodel=../data/full_800_multi.caffemodel --prototxt=../data/full_800.prototxt --input=/home/waleed/Desktop/test/GMS-Feature-Matcher/data/left_high.jpg --W=800 --H=800 --class=80 --mode=int8 --enginefile= --batchsize=6 --nms=0.0001 --calib=../data/train_names.txt
+
+// run inference
+
+./runYolov3 --caffemodel=../data/full_800_multi.caffemodel --prototxt=../data/full_800.prototxt --input=/home/waleed/Desktop/test/GMS-Feature-Matcher/data/left_high.jpg --W=800 --H=800 --class=80 --mode=int8 --enginefile=full_800_int8_multi.engine --nms=0.0001 --batchsize=6
+
+-------validation 
+
+./runYolov3 --caffemodel=../data/full_800_multi.caffemodel --prototxt=../data/full_800.prototxt --mode=fp16 --enginefile=full_800_fp16_multi.engine --nms=0.25 --batchsize=2 --evallist=../data/validate_final_multi.csv --datasetpath=/home/waleed/projects/MIT/MIT-Driverless-CV-TrainingInfra/CVC-YOLOv3/dataset/YOLO_Dataset/
+
+./runYolov3 --caffemodel=../data/full_800_multi.caffemodel --prototxt=../data/full_800.prototxt --mode=fp16 --enginefile=full_800_int8_multi_25bs.engine --nms=0.5 --batchsize=25 --evallist=../data/validate_final_multi.csv --datasetpath=/home/waleed/projects/MIT/MIT-Driverless-CV-TrainingInfra/CVC-YOLOv3/dataset/YOLO_Dataset/
+
+./runYolov3 --caffemodel=../data/full_800_multi.caffemodel --prototxt=../data/full_800.prototxt --mode=fp16 --enginefile=full_800_int8_multi_25bs.engine --nms=0.5 --batchsize=25 --evallist=../data/validate_final_multi.csv --datasetpath=/home/waleed/projects/MIT/MIT-Driverless-CV-TrainingInfra/CVC-YOLOv3/dataset/YOLO_Dataset/
+
+
+
+
+
 

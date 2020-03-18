@@ -28,6 +28,8 @@ namespace Tn
     };
     //[lst<filename>,lst<bbox_vec>]
     std::tuple<std::list<std::string>, std::list<std::vector<Bbox>>> readObjectLabelFileList(const std::string& fileName);
+    std::tuple<std::list<std::string>, std::list<std::vector<Bbox>>> readObjectLabelNewFileList(const std::string& fileName, const std::string& datasetPath);
+    
 }
 
 #endif

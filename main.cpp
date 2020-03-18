@@ -191,6 +191,7 @@ int main( int argc, char* argv[] )
     //input
     parser::ADD_ARG_STRING("input",Desc("input image file"),DefaultValue(INPUT_IMAGE),ValueDesc("file"));
     parser::ADD_ARG_STRING("evallist",Desc("eval gt list"),DefaultValue(EVAL_LIST),ValueDesc("file"));
+    parser::ADD_ARG_STRING("datasetpath",Desc("eval gt list"),DefaultValue(DATASET_PATH),ValueDesc("file"));
 
     if(argc < 2){
         parser::printDesc();
@@ -275,7 +276,7 @@ int main( int argc, char* argv[] )
     if(listFile.length() > 0)
     {
         std::cout << "loading from eval list " << listFile << std::endl; 
-        tie(fileNames,groundTruth) = readObjectLabelFileList(listFile);
+        tie(fileNames,groundTruth) = readObjectLabelNewFileList(listFile, parser::getStringValue("datasetpath"));
     }
     else
     {
@@ -357,7 +358,7 @@ int main( int argc, char* argv[] )
         auto bbox = *outputs.begin();
         for(const auto& item : bbox)
         {
-            cv::rectangle(img,cv::Point(item.left,item.top),cv::Point(item.right,item.bot),cv::Scalar(0,0,255),3,8,0);
+            cv::rectangle(img,cv::Point(item.left,item.top),cv::Point(item.right,item.bot),cv::Scalar(0,0,255),1,8,0);
             cout << "class=" << item.classId << " prob=" << item.score*100 << endl;
             cout << "left=" << item.left << " right=" << item.right << " top=" << item.top << " bot=" << item.bot << endl;
         }
